@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { api } from '../lib/api';
-import type { Caterer } from '../types';
+import { api } from '../../lib/api';
+import type { Caterer } from '../../types';
 import {
   MapPin, Users, Wallet, Zap, ChevronRight, SlidersHorizontal,
   X, RotateCcw, ArrowRight, Check,

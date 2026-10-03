@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { api } from '../lib/api';
-import { useAuth } from '../lib/AuthContext';
-import type { Caterer } from '../types';
+import { api } from '../../lib/api';
+import { useAuth } from '../../lib/AuthContext';
+import type { Caterer } from '../../types';
 import {
   MapPin, Users, Clock, Check, CheckCircle, ChevronRight,
   Send, Eye, LogIn,

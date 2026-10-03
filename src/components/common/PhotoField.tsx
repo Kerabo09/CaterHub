@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ImagePlus, Trash2, Loader2 } from 'lucide-react';
-import { fileToResizedDataUrl } from '../lib/image';
+import { fileToResizedDataUrl } from '../../lib/image';
 
 interface Props {
   label: string;

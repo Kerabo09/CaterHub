@@ -135,7 +135,7 @@ export interface CatererFilters { q?: string; eventType?: string; minGuests?: nu
 
 export interface CatererSignupProfile {
   tagline?: string; description?: string; location?: string; phone?: string;
-  areas?: string[]; eventTypes?: string[]; serviceStyles?: string[];
+  areas?: string[]; eventTypes?: string[]; serviceStyles?: string[]; contactName?: string;
 }
 export interface SignUpInput {
   role: Role;
@@ -144,6 +144,8 @@ export interface SignUpInput {
   password: string;
   idType: string;
   idImage: string; // JPEG data URL
+  phone?: string;
+  contactName?: string;
   profile?: CatererSignupProfile;
 }
 export interface AuthResult { user: User }
@@ -201,7 +203,7 @@ export const api = {
       email: input.email.trim().toLowerCase(),
       password: input.password,
       // The database trigger turns this into the profile (and, for caterers, the business listing).
-      options: { data: { role: input.role, name, id_type: input.idType, profile: input.role === 'caterer' ? input.profile ?? {} : {} } },
+      options: { data: { role: input.role, name, id_type: input.idType, phone: input.phone ?? '', contact_name: input.contactName ?? '', profile: input.role === 'caterer' ? input.profile ?? {} : {} } },
     });
     if (error) fail(error);
     // With "Confirm email" on, Supabase hides duplicates by returning a user with no identities.

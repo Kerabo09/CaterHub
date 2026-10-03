@@ -1,0 +1,11 @@
+/* ---------- legal pages ---------- */
+.legal { background: #fff; }
+.legal-inner { max-width: 760px; margin: 0 auto; padding: 56px 20px 72px; }
+.legal-eyebrow { margin: 0 0 8px; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--brand); }
+.legal h1 { margin: 0 0 14px; font-size: clamp(28px, 4vw, 38px); font-weight: 800; color: #0F1A33; }
+.legal-intro { margin: 0 0 28px; font-size: 15.5px; line-height: 1.7; color: #4B5563; }
+.legal section { padding: 20px 0; border-top: 1px solid var(--line); }
+.legal h2 { margin: 0 0 8px; font-size: 16px; font-weight: 700; color: #111827; }
+.legal section p { margin: 0; font-size: 14.5px; line-height: 1.75; color: #4B5563; }
+.legal-foot { margin-top: 24px; font-size: 14px; color: var(--muted); }
+.legal-foot a { color: var(--brand); font-weight: 700; }

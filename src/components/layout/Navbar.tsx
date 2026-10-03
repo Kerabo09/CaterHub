@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoSrc from '../assets/logo.png';
-import { useAuth } from '../lib/AuthContext';
+import logoSrc from '../../assets/logo.png';
+import { useAuth } from '../../lib/AuthContext';
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,6 +9,10 @@ export function Navbar() {
   const { user, logOut } = useAuth();
   const home = user?.role === 'caterer' ? { to: '/dashboard', label: 'My dashboard' } : { to: '/my-inquiries', label: 'My inquiries' };
   const active = (p: string) => loc.pathname === p;
+  const onAuth = ['/login', '/signup', '/partner-login', '/partner-signup'].includes(loc.pathname);
+  const onPartner = loc.pathname.startsWith('/partner');
+  const isSignup = loc.pathname.endsWith('signup');
+  const roleStyle = (on: boolean) => (on ? { background: '#fff', boxShadow: '0 1px 3px rgba(0,0,0,.1)' } : {});
 
   return (
     <header style={{ background: '#fff', borderBottom: '1px solid #E5E7EB' }} className="sticky top-0 z-50">
@@ -35,12 +39,12 @@ export function Navbar() {
               <button onClick={logOut} className="px-3 py-1.5 text-xs font-semibold rounded-full border border-gray-200 hover:bg-gray-50" style={{ color: '#374151' }}>Log out</button>
             </>
           ) : (
-            <div className="flex items-center rounded-full border border-gray-200 overflow-hidden text-xs font-semibold">
-              <Link to="/login" className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-50 transition-colors" style={{ color: '#374151' }}>
+            <div className="flex items-center rounded-full border border-gray-200 overflow-hidden text-xs font-semibold" style={onAuth ? { background: '#F3F5FB' } : undefined}>
+              <Link to={isSignup ? '/signup' : '/login'} className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-50 transition-colors" style={{ color: '#374151', ...roleStyle(onAuth && !onPartner) }}>
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#9CA3AF', display: 'inline-block' }} />
                 Customer
               </Link>
-              <Link to="/partner-login" className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-50 transition-colors" style={{ color: '#374151' }}>
+              <Link to={isSignup ? '/partner-signup' : '/partner-login'} className="flex items-center gap-1.5 px-3 py-1.5 hover:bg-gray-50 transition-colors" style={{ color: '#374151', ...roleStyle(onAuth && onPartner) }}>
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#B84922', display: 'inline-block' }} />
                 Caterer
               </Link>

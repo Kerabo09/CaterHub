@@ -5,7 +5,10 @@ Stack: React + Vite website · **Supabase** (login, database, photo storage). Th
 ## 1. Database (once)
 Supabase Dashboard > SQL Editor > run, in order:
 1. `supabase/migrations/001_caterhub_schema.sql`
-2. `supabase/migrations/003_supabase_auth.sql`   (skip 002; it belonged to the old API server)
+2. `supabase/migrations/003_supabase_auth.sql`
+3. `supabase/migrations/004_signup_contact_fields.sql`   (saves the customer phone number and the caterer contact name from the new sign-up form)
+
+The old API-server script now lives in `supabase/legacy/` and is not needed.
 
 003 creates the `profiles` table, the sign-up trigger, the security rules, and two storage buckets
 (`id-verification` private, `caterer-photos` public). It is safe to run more than once.

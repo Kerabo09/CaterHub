@@ -1,27 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { Home } from './pages/Home';
-import { Browse } from './pages/Browse';
-import { Directory } from './pages/Directory';
-import { CatererProfile } from './pages/CatererProfile';
+import { Layout } from './components/layout/Layout';
+import { Home } from './pages/public/Home';
+import { Browse } from './pages/public/Browse';
+import { Directory } from './pages/public/Directory';
+import { CatererProfile } from './pages/public/CatererProfile';
 import { AuthPage } from './components/auth/AuthPage';
-import { Contact } from './pages/Contact';
-import { HowItWorks } from './pages/HowItWorks';
-import { Dashboard } from './pages/Dashboard';
-import { MyInquiries } from './pages/MyInquiries';
-import { RequireRole } from './components/RequireRole';
+import { Legal } from './pages/public/Legal';
+import { Contact } from './pages/public/Contact';
+import { HowItWorks } from './pages/public/HowItWorks';
+import { Dashboard } from './pages/partner/Dashboard';
+import { MyInquiries } from './pages/customer/MyInquiries';
+import { RequireRole } from './components/common/RequireRole';
 import { AuthProvider } from './lib/AuthContext';
-
-function Layout({ children, hideFooter }: { children: React.ReactNode; hideFooter?: boolean }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-      <Navbar />
-      <main style={{ flex: 1 }}>{children}</main>
-      {!hideFooter && <Footer />}
-    </div>
-  );
-}
 
 export default function App() {
   return (
@@ -32,10 +22,12 @@ export default function App() {
         <Route path="/browse" element={<Layout><Browse /></Layout>} />
         <Route path="/caterers" element={<Layout><Directory /></Layout>} />
         <Route path="/caterers/:id" element={<Layout><CatererProfile /></Layout>} />
-        <Route path="/login" element={<AuthPage key="c-login" role="customer" initialMode="login" />} />
-        <Route path="/signup" element={<AuthPage key="c-signup" role="customer" initialMode="signup" />} />
-        <Route path="/partner-login" element={<AuthPage key="p-login" role="caterer" initialMode="login" />} />
-        <Route path="/partner-signup" element={<AuthPage key="p-signup" role="caterer" initialMode="signup" />} />
+        <Route path="/login" element={<Layout hideFooter><AuthPage key="c-login" role="customer" initialMode="login" /></Layout>} />
+        <Route path="/signup" element={<Layout hideFooter><AuthPage key="c-signup" role="customer" initialMode="signup" /></Layout>} />
+        <Route path="/partner-login" element={<Layout hideFooter><AuthPage key="p-login" role="caterer" initialMode="login" /></Layout>} />
+        <Route path="/partner-signup" element={<Layout hideFooter><AuthPage key="p-signup" role="caterer" initialMode="signup" /></Layout>} />
+        <Route path="/privacy" element={<Layout><Legal kind="privacy" /></Layout>} />
+        <Route path="/terms" element={<Layout><Legal kind="terms" /></Layout>} />
         <Route path="/dashboard" element={<Layout hideFooter><RequireRole role="caterer"><Dashboard /></RequireRole></Layout>} />
         <Route path="/my-inquiries" element={<Layout><RequireRole role="customer"><MyInquiries /></RequireRole></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />

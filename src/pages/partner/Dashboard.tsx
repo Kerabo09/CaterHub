@@ -3,11 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Building2, Package as PackageIcon, Inbox, CheckCircle2, AlertCircle, ExternalLink, Plus, Pencil, Trash2, Loader2, Mail, Calendar, Users, MapPin,
 } from 'lucide-react';
-import { api, assetUrl, storedUrl } from '../lib/api';
-import { useAuth } from '../lib/AuthContext';
-import { PhotoField } from '../components/PhotoField';
-import { EVENT_TYPES, SERVICE_STYLES, RESPONSE_TIMES, INQUIRY_STATUS_LABEL } from '../lib/options';
-import type { Caterer, Inquiry, InquiryStatus, ListingStatus, Package, PackageInput, ProfileInput } from '../types';
+import { api, assetUrl, storedUrl } from '../../lib/api';
+import { useAuth } from '../../lib/AuthContext';
+import { PhotoField } from '../../components/common/PhotoField';
+import { EVENT_TYPES, SERVICE_STYLES, RESPONSE_TIMES, INQUIRY_STATUS_LABEL } from '../../lib/options';
+import type { Caterer, Inquiry, InquiryStatus, ListingStatus, Package, PackageInput, ProfileInput } from '../../types';
 
 type Tab = 'profile' | 'packages' | 'inquiries';
 

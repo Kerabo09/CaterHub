@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api } from '../lib/api';
+import { api } from '../../lib/api';
 import {
   CalendarDays, UtensilsCrossed, Handshake, Clock, Mail,
   Plus, Minus, ArrowRight, CheckCircle, Send,

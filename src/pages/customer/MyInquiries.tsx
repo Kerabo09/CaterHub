@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader2, Calendar, Users, MapPin } from 'lucide-react';
-import { api } from '../lib/api';
-import { INQUIRY_STATUS_LABEL } from '../lib/options';
-import type { Inquiry } from '../types';
+import { api } from '../../lib/api';
+import { INQUIRY_STATUS_LABEL } from '../../lib/options';
+import type { Inquiry } from '../../types';
 
 export function MyInquiries() {
   const [items, setItems] = useState<Inquiry[] | null>(null);
