@@ -10,7 +10,8 @@ import { Contact } from './pages/public/Contact';
 import { HowItWorks } from './pages/public/HowItWorks';
 import { Dashboard } from './pages/partner/Dashboard';
 import { MyInquiries } from './pages/customer/MyInquiries';
-
+import { RequireRole } from './components/common/RequireRole';
+import { AuthProvider } from './lib/AuthContext';
 
 export default function App() {
   return (
